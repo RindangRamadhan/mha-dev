@@ -1,4 +1,4 @@
-import Index from '../components/ExampleComponent'
+import Index from '../pages/index'
 
 const routes = [
       {
