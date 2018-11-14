@@ -1,6 +1,7 @@
-import { LOGIN, LOGOUT } from './mutations'
+import { LOGIN, LOGOUT, SET_USERS } from './mutations'
 
 const state = {
+    users: [],
     profile : {},
     loggedIn : false,
     is_admin : false,
@@ -31,10 +32,24 @@ const mutations = {
       state.is_member = false
       state.loggedIn = false
       state.profile = {}
+    },
+
+    [SET_USERS] (state,users) {
+      state.users = users
     }
 }
 
 const actions = {
+
+  LOAD_USERS : function({commit}){
+    axios.get('api/users/all')
+    .then((resp) => {
+      commit(SET_USERS,resp.data)
+    },
+    (err) => {
+      console.log(err)
+    })
+  }
 
 }
 

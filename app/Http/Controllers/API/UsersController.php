@@ -14,6 +14,11 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function all()
+    {
+        return User::all();
+    }
+
     public function index(Request $request)
     {
         $users = User::with('role')->where(function($query) use ($request){

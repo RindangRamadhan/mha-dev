@@ -1,10 +1,10 @@
 <template>
     <layout>
-        <Breadcrumb active="user" :breadcrumb="breadcrumb" />
-        
+        <Breadcrumb active="daftar_akun" :breadcrumb="breadcrumb" />
+
         <div class="ui pointing menu">
-            <router-link :to="{name: 'user_create'}" class="ui teal labeled icon button">
-                User
+            <router-link :to="{name: 'daftar_akun_create'}" class="ui teal labeled icon button">
+                Akun
                 <i class="add icon"></i>
             </router-link>
             <div class="right menu">                
@@ -17,10 +17,10 @@
         <div class="responsive" v-else>
             <sui-table unstackable>
                 <TableHeader :header="tableHeader" />
-                <TableBody :data="dataUsers" labelEdit="Edit" edit="user_edit" v-on:delete="handleDelete" v-if="dataUsers.length"/>
+                <TableBody :data="dataAkuns" labelEdit="Edit" edit="daftar_akun_edit" v-on:delete="handleDelete" v-if="dataAkuns.length"/>
                 <TableKosong colspan="6" :text="message_table_kosong" v-else/>
             </sui-table>
-            <pagination :data="users" v-on:pagination-change-page="getUser" :limit="4"></pagination>
+            <pagination :data="daftar_akuns" v-on:pagination-change-page="getAkun" :limit="4"></pagination>
         </div>
     </layout>
 </template>
@@ -36,15 +36,15 @@
         data: () => ({
             breadcrumb: [
                 {value: 'home',label:'Dashboard'},
-                {value: 'user',label:'User'}
+                {value: 'daftar_akun',label:'Akun'}
             ],
-            tableHeader: ['ID','Name','E-mail','Otoritas','Edit','Hapus'],
+            tableHeader: ['ID','Investor','Akun','Edit','Hapus'],
             loading: true,
-            users: {},
-            dataUsers: [],
+            akuns: {},
+            dataAkuns: [],
             searchLoading: false,
             search: '',
-            message_table_kosong: 'Data Users Kosong'
+            message_table_kosong: 'Data Akun Kosong'
         }),
         components:{
             Breadcrumb, TableHeader, TableBody, TableKosong, Loading
@@ -53,37 +53,37 @@
           search(){
             const app = this
             app.searchLoading = true
-            app.getUser()
+            app.getAkun()
           }
         },
         mounted() {
             const app = this
-            app.getUser()
+            app.getAkun()
         },
         methods: {
-            getUser(page = 1) {
+            getAkun(page = 1) {
                 const app =  this
-                axios.get(`api/users?page=${page}&search=${app.search}`).then((resp) => {
-                    app.users = resp.data
-                    app.dataUsers = resp.data.data
+                axios.get(`api/daftar-akun?page=${page}&search=${app.search}`).then((resp) => {
+                    app.akuns = resp.data
+                    app.dataAkuns = resp.data.data
                     app.searchLoading = false
                     app.loading = false
-                    if(!app.users.data.length && app.search){ 
-                        app.message_table_kosong = `Oopps, Tidak ada data User yang ditemukan untuk kata kunci "${app.search}". Cobalah menggunakan kata kunci yang lain.`
+                    if(!app.akuns.data.length && app.search){ 
+                        app.message_table_kosong = `Oopps, Tidak ada data Akun yang ditemukan untuk kata kunci "${app.search}". Cobalah menggunakan kata kunci yang lain.`
                     }                    
                 })
                 .catch((err) => {
                     app.searchLoading = false
                     app.loading = false
-                    alert("Gagal Memuat Data User")
+                    alert("Gagal Memuat Data Akun")
                     console.log(err)
                 })
             },
             handleDelete(id){
                 const app = this
-                axios.delete(`api/users/${id}`).then((resp) => {
-                    app.alert("Berhasil menghapus data user")
-                    app.getUser()
+                axios.delete(`api/daftar-akun/${id}`).then((resp) => {
+                    app.alert("Berhasil Menghapus Data Akun")
+                    app.getAkun()
                 })
                 .catch((err) => {
                     alert(err)

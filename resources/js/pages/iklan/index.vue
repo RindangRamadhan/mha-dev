@@ -2,27 +2,26 @@
     <layout>
         <Breadcrumb active="iklan" :breadcrumb="breadcrumb" />
         
-        <div class="ui right aligned grid">
-            <div class="left floated right aligned six wide column" style="text-align: left !important">
-                <router-link :to="{name: 'iklan_create'}" class="ui teal labeled icon button">
-                    Tambah Iklan
-                    <i class="add icon"></i>
-                </router-link>
-                
-            </div>
-            <div class="right floated left aligned six wide column" style="text-align: right !important">                
+        <div class="ui pointing menu">
+            <router-link :to="{name: 'iklan_create'}" class="ui teal labeled icon button">
+                Iklan
+                <i class="add icon"></i>
+            </router-link>
+            <div class="right menu">                
                 <sui-input placeholder="Search..." icon="search" v-model="search" loading v-if="searchLoading" />
                 <sui-input placeholder="Search..." icon="search" v-model="search" v-else />
             </div>
         </div>
         
         <Loading v-if="loading"/>
-        <sui-table striped v-else>
-            <TableHeader :header="tableHeader" />
-            <TableBody :data="dataIklans" labelEdit="Edit" edit="iklan_edit" v-on:delete="handleDelete" v-if="dataIklans.length"/>
-            <TableKosong colspan="6" :text="message_table_kosong" v-else/>
-        </sui-table>
-        <pagination :data="iklans" v-on:pagination-change-page="getIklan" :limit="4"></pagination>
+        <div class="responsive">
+            <sui-table unstackable>
+                <TableHeader :header="tableHeader" />
+                <TableBody :data="dataIklans" labelEdit="Edit" edit="iklan_edit" v-on:delete="handleDelete" v-if="dataIklans.length"/>
+                <TableKosong colspan="6" :text="message_table_kosong" v-else/>
+            </sui-table>
+            <pagination :data="iklans" v-on:pagination-change-page="getIklan" :limit="4"></pagination>
+        </div>
     </layout>
 </template>
 

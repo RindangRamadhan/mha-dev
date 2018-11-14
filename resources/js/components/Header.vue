@@ -1,6 +1,10 @@
 <template lang="html">
   <div>
     <sui-menu fixed inverted>
+      <a class="item" @click="sideBar()">
+        <i class="sidebar icon"></i>
+        Menu
+      </a>
       <sui-menu-menu position="right">
         <router-link :to="{name: 'login'}" 
           class="item"
@@ -35,7 +39,7 @@
       </sui-menu-menu>
     </sui-menu>
     
-    <div class="ui inverted vertical pointing menu fixed" style="height: 100%">
+    <div class="ui inverted vertical pointing menu fixed sidebar" style="height: 100%">
       <router-link :to="{name: 'home'}" class="item" v-if="this.$store.state.user.loggedIn">
         <i class="th list icon"></i> MHA - DEV
       </router-link>
@@ -43,8 +47,9 @@
       <div class="item">
         <i class="angle down icon"></i> Master Data
         <div class="menu" style="padding-left: 15px">
-          <a class="item">Daftar Akun</a>
-          <a class="item">Investor</a>
+          <router-link :to="{name: 'daftar_akun'}" class="item" v-if="this.$store.state.user.loggedIn">
+              Daftar Akun
+          </router-link>
           <router-link :to="{name: 'iklan'}" class="item" v-if="this.$store.state.user.loggedIn">
               Iklan
           </router-link>
@@ -56,10 +61,8 @@
           </router-link>
         </div>
      </div>
-
-      <a class="item"><i class="gamepad icon"></i> Games </a>
-      <a class="item"><i class="video camera icon"></i> Channels </a>
-      <a class="item"><i class="video play icon"></i> Videos </a>
+      <a class="item"><i class="chart line icon"></i> Profit Harian</a>
+      <a class="item"><i class="clipboard list icon"></i> Laporan Periode </a>
     </div>
   </div>
 </template>
@@ -69,6 +72,13 @@
     mounted(){
       const app = this
       const pelanggan = app.$store.state.user.profile.id 
+    },
+    methods: {
+      sideBar() {
+        $('.ui.pointing.menu.sidebar')
+          .sidebar('toggle')
+        ;
+      }
     }
   }
 </script>

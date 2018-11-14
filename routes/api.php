@@ -13,11 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('users/all','API\UsersController@all');
+
 Route::middleware('auth:api','throttle:200,5')->group(function(){
 
     Route::resource('users','API\UsersController');
     Route::resource('otoritas','API\OtoritasController');
     Route::resource('iklan','API\IklanController');
     Route::resource('server','API\ServerController');
+    Route::resource('daftar-akun','API\DaftarAkunController');
 
 });

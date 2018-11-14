@@ -10,6 +10,9 @@ import IklanEdit from '../pages/iklan/edit'
 import Servers from '../pages/server'
 import ServerCreate from '../pages/server/create'
 import ServerEdit from '../pages/server/edit'
+import DaftarAkun from '../pages/daftar_akun'
+import DaftarAkunCreate from '../pages/daftar_akun/create'
+import DaftarAkunEdit from '../pages/daftar_akun/edit'
 
 const routes = [
       {
@@ -101,6 +104,33 @@ const routes = [
         path: '/server/edit/:id',
         name: 'server_edit',
         component: ServerEdit,
+        meta: {
+            requiresAuth: true,
+            is_admin: true
+        }
+      },
+      {
+        path: '/daftar-akun',
+        name: 'daftar_akun',
+        component: DaftarAkun,
+        meta: {
+            requiresAuth: true,
+            is_admin: true
+        }
+      },
+      {
+        path: '/daftar-akun/create',
+        name: 'daftar_akun_create',
+        component: DaftarAkunCreate,
+        meta: {
+            requiresAuth: true,
+            is_admin: true
+        }
+      },
+      {
+        path: '/daftar-akun/edit/:id',
+        name: 'daftar_akun_edit',
+        component: DaftarAkunEdit,
         meta: {
             requiresAuth: true,
             is_admin: true
