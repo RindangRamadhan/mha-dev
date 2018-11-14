@@ -73814,6 +73814,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_iklan_create___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__pages_iklan_create__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_iklan_edit__ = __webpack_require__(488);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_iklan_edit___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__pages_iklan_edit__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_server__ = __webpack_require__(493);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_server___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__pages_server__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_server_create__ = __webpack_require__(496);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_server_create___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__pages_server_create__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_server_edit__ = __webpack_require__(499);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_server_edit___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__pages_server_edit__);
+
+
+
 
 
 
@@ -73879,6 +73888,30 @@ var routes = [{
   path: '/iklan/edit/:id',
   name: 'iklan_edit',
   component: __WEBPACK_IMPORTED_MODULE_8__pages_iklan_edit___default.a,
+  meta: {
+    requiresAuth: true,
+    is_admin: true
+  }
+}, {
+  path: '/server',
+  name: 'server',
+  component: __WEBPACK_IMPORTED_MODULE_9__pages_server___default.a,
+  meta: {
+    requiresAuth: true,
+    is_admin: true
+  }
+}, {
+  path: '/server/create',
+  name: 'server_create',
+  component: __WEBPACK_IMPORTED_MODULE_10__pages_server_create___default.a,
+  meta: {
+    requiresAuth: true,
+    is_admin: true
+  }
+}, {
+  path: '/server/edit/:id',
+  name: 'server_edit',
+  component: __WEBPACK_IMPORTED_MODULE_11__pages_server_edit___default.a,
   meta: {
     requiresAuth: true,
     is_admin: true
@@ -76940,6 +76973,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -77078,6 +77114,17 @@ var render = function() {
                       "router-link",
                       { staticClass: "item", attrs: { to: { name: "iklan" } } },
                       [_vm._v("\n            Iklan\n        ")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                this.$store.state.user.loggedIn
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "item",
+                        attrs: { to: { name: "server" } }
+                      },
+                      [_vm._v("\n            Server\n        ")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -95768,7 +95815,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      breadcrumb: [{ value: 'index', label: 'Dashboard' }, { value: 'iklan', label: 'Iklan' }, { value: 'iklan_create', label: 'Tambah Iklan' }],
+      breadcrumb: [{ value: 'home', label: 'Dashboard' }, { value: 'iklan', label: 'Iklan' }, { value: 'iklan_create', label: 'Tambah Iklan' }],
       loading: false,
       errors: [],
       message: '',
@@ -96062,6 +96109,723 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-1c6f75ea", module.exports)
+  }
+}
+
+/***/ }),
+/* 493 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(494)
+/* template */
+var __vue_template__ = __webpack_require__(495)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/pages/server/index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5898d1ef", Component.options)
+  } else {
+    hotAPI.reload("data-v-5898d1ef", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 494 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Breadcrumb__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Breadcrumb___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Breadcrumb__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_TableHeader__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_TableHeader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_TableHeader__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_TableBody__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_TableBody___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_TableBody__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_TableKosong__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_TableKosong___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_TableKosong__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Loading__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Loading___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_Loading__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            breadcrumb: [{ value: 'home', label: 'Dashboard' }, { value: 'server', label: 'Server' }],
+            tableHeader: ['ID', 'Server', 'Edit', 'Hapus'],
+            loading: true,
+            servers: {},
+            dataServers: [],
+            searchLoading: false,
+            search: '',
+            message_table_kosong: 'Data Server Kosong'
+        };
+    },
+    components: {
+        Breadcrumb: __WEBPACK_IMPORTED_MODULE_0__components_Breadcrumb___default.a, TableHeader: __WEBPACK_IMPORTED_MODULE_1__components_TableHeader___default.a, TableBody: __WEBPACK_IMPORTED_MODULE_2__components_TableBody___default.a, TableKosong: __WEBPACK_IMPORTED_MODULE_3__components_TableKosong___default.a, Loading: __WEBPACK_IMPORTED_MODULE_4__components_Loading___default.a
+    },
+    watch: {
+        search: function search() {
+            var app = this;
+            app.searchLoading = true;
+            app.getServer();
+        }
+    },
+    mounted: function mounted() {
+        var app = this;
+        app.getServer();
+    },
+
+    methods: {
+        getServer: function getServer() {
+            var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+            var app = this;
+            axios.get('api/server?page=' + page + '&search=' + app.search).then(function (resp) {
+                app.servers = resp.data;
+                app.dataServers = resp.data.data;
+                app.searchLoading = false;
+                app.loading = false;
+                if (!app.servers.data.length && app.search) {
+                    app.message_table_kosong = 'Oopps, Tidak ada data Server yang ditemukan untuk kata kunci "' + app.search + '". Cobalah menggunakan kata kunci yang lain.';
+                }
+            }).catch(function (err) {
+                app.searchLoading = false;
+                app.loading = false;
+                alert("Gagal Memuat Data Server");
+                console.log(err);
+            });
+        },
+        handleDelete: function handleDelete(id) {
+            var app = this;
+            axios.delete('api/server/' + id).then(function (resp) {
+                app.alert("Berhasil Menghapus Data Server");
+                app.getServer();
+            }).catch(function (err) {
+                alert(err);
+                console.log(err);
+            });
+        },
+        alert: function alert(pesan) {
+            var app = this;
+            app.$swal({
+                text: pesan,
+                icon: "success",
+                buttons: false,
+                timer: 1000
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 495 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "layout",
+    [
+      _c("Breadcrumb", {
+        attrs: { active: "server", breadcrumb: _vm.breadcrumb }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "ui right aligned grid" }, [
+        _c(
+          "div",
+          {
+            staticClass: "left floated right aligned six wide column",
+            staticStyle: { "text-align": "left !important" }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "ui teal labeled icon button",
+                attrs: { to: { name: "server_create" } }
+              },
+              [
+                _vm._v("\n                Tambah Server\n                "),
+                _c("i", { staticClass: "add icon" })
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "right floated left aligned six wide column",
+            staticStyle: { "text-align": "right !important" }
+          },
+          [
+            _vm.searchLoading
+              ? _c("sui-input", {
+                  attrs: {
+                    placeholder: "Search...",
+                    icon: "search",
+                    loading: ""
+                  },
+                  model: {
+                    value: _vm.search,
+                    callback: function($$v) {
+                      _vm.search = $$v
+                    },
+                    expression: "search"
+                  }
+                })
+              : _c("sui-input", {
+                  attrs: { placeholder: "Search...", icon: "search" },
+                  model: {
+                    value: _vm.search,
+                    callback: function($$v) {
+                      _vm.search = $$v
+                    },
+                    expression: "search"
+                  }
+                })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _vm.loading
+        ? _c("Loading")
+        : _c(
+            "sui-table",
+            { attrs: { striped: "" } },
+            [
+              _c("TableHeader", { attrs: { header: _vm.tableHeader } }),
+              _vm._v(" "),
+              _vm.dataServers.length
+                ? _c("TableBody", {
+                    attrs: {
+                      data: _vm.dataServers,
+                      labelEdit: "Edit",
+                      edit: "server_edit"
+                    },
+                    on: { delete: _vm.handleDelete }
+                  })
+                : _c("TableKosong", {
+                    attrs: { colspan: "6", text: _vm.message_table_kosong }
+                  })
+            ],
+            1
+          ),
+      _vm._v(" "),
+      _c("pagination", {
+        attrs: { data: _vm.servers, limit: 4 },
+        on: { "pagination-change-page": _vm.getServer }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5898d1ef", module.exports)
+  }
+}
+
+/***/ }),
+/* 496 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(497)
+/* template */
+var __vue_template__ = __webpack_require__(498)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/pages/server/create.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3b9492a2", Component.options)
+  } else {
+    hotAPI.reload("data-v-3b9492a2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 497 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Header__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Header__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Breadcrumb__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Breadcrumb___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Breadcrumb__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_TextInput__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_TextInput___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_TextInput__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      breadcrumb: [{ value: 'home', label: 'Dashboard' }, { value: 'server', label: 'Server' }, { value: 'server_create', label: 'Tambah Server' }],
+      loading: false,
+      errors: [],
+      message: '',
+      servers: {
+        name: ''
+      }
+    };
+  },
+  mounted: function mounted() {
+    var app = this;
+  },
+
+  components: {
+    Header: __WEBPACK_IMPORTED_MODULE_0__components_Header___default.a, Breadcrumb: __WEBPACK_IMPORTED_MODULE_1__components_Breadcrumb___default.a, TextInput: __WEBPACK_IMPORTED_MODULE_2__components_TextInput___default.a
+  },
+  methods: {
+    saveForm: function saveForm() {
+      var app = this;
+      app.loading = true;
+      axios.post('api/server', app.servers).then(function (resp) {
+        app.loading = false;
+        app.alert("Berhasil Menambahkan Server baru");
+        app.$router.push('/server');
+      }).catch(function (err) {
+        console.log(err);
+        var errors = err.response.data;
+        app.loading = false;
+        app.setError(errors);
+      });
+    },
+    setError: function setError(errors) {
+      var app = this;
+      if (Object.keys(errors).length) {
+        app.errors = errors.errors;
+      }
+    },
+    alert: function alert(pesan) {
+      var app = this;
+      app.$swal({
+        text: pesan,
+        icon: "success",
+        buttons: false,
+        timer: 1000
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 498 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "layout",
+    [
+      _c("Breadcrumb", {
+        attrs: { active: "server_create", breadcrumb: _vm.breadcrumb }
+      }),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          class: [_vm.loading ? "ui loading form" : "ui form"],
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              _vm.saveForm()
+            }
+          }
+        },
+        [
+          _c("TextInput", {
+            attrs: {
+              label: "Nama Server",
+              type: "text",
+              id: "name",
+              placeholder: "Nama Server",
+              errors: _vm.errors.name
+            },
+            model: {
+              value: _vm.servers.name,
+              callback: function($$v) {
+                _vm.$set(_vm.servers, "name", $$v)
+              },
+              expression: "servers.name"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "ui teal labeled icon button",
+              attrs: { type: "submit" }
+            },
+            [
+              _vm._v("\n            Submit Server\n            "),
+              _c("i", { staticClass: "send icon" })
+            ]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3b9492a2", module.exports)
+  }
+}
+
+/***/ }),
+/* 499 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(500)
+/* template */
+var __vue_template__ = __webpack_require__(501)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/pages/server/edit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7459d77d", Component.options)
+  } else {
+    hotAPI.reload("data-v-7459d77d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 500 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Header__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Header__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Breadcrumb__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Breadcrumb___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Breadcrumb__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_TextInput__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_TextInput___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_TextInput__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            breadcrumb: [{ value: 'home', label: 'Dashboard' }, { value: 'server', label: 'Servers' }, { value: 'server_edit', label: 'Edit Server' }],
+            loading: false,
+            errors: [],
+            message: '',
+            servers: {
+                name: ''
+            }
+        };
+    },
+    mounted: function mounted() {
+        var app = this;
+        app.findServer(app.$route.params.id);
+    },
+
+    components: {
+        Header: __WEBPACK_IMPORTED_MODULE_0__components_Header___default.a, Breadcrumb: __WEBPACK_IMPORTED_MODULE_1__components_Breadcrumb___default.a, TextInput: __WEBPACK_IMPORTED_MODULE_2__components_TextInput___default.a
+    },
+    methods: {
+        findServer: function findServer(id) {
+            var app = this;
+            axios.get('api/server/' + id).then(function (resp) {
+                var data = resp.data;
+
+                app.servers.name = data.name;
+            }).catch(function (err) {
+                console.log(err);
+                alert(err);
+            });
+        },
+        saveForm: function saveForm() {
+            var _this = this;
+
+            var app = this;
+            var id = app.$route.params.id;
+            app.loading = true;
+            axios.put('api/server/' + id, app.servers).then(function (resp) {
+                app.loading = false;
+                app.alert("Berhasil Mengubah Server");
+                app.$router.push('/server');
+            }).catch(function (err) {
+                console.log(err);
+                var app = _this;
+                var errors = err.response.data;
+                app.loading = false;
+                app.setError(errors);
+            });
+        },
+        setError: function setError(errors) {
+            var app = this;
+            if (Object.keys(errors).length) {
+                app.errors = errors.errors;
+            }
+        },
+        alert: function alert(pesan) {
+            var app = this;
+            app.$swal({
+                text: pesan,
+                icon: "success",
+                buttons: false,
+                timer: 1000
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 501 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "layout",
+    [
+      _c("Breadcrumb", {
+        attrs: { active: "server_edit", breadcrumb: _vm.breadcrumb }
+      }),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          class: [_vm.loading ? "ui loading form" : "ui form"],
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              _vm.saveForm()
+            }
+          }
+        },
+        [
+          _c("TextInput", {
+            attrs: {
+              label: "Name",
+              type: "text",
+              placeholder: "Name",
+              errors: _vm.errors.name
+            },
+            model: {
+              value: _vm.servers.name,
+              callback: function($$v) {
+                _vm.$set(_vm.servers, "name", $$v)
+              },
+              expression: "servers.name"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "ui teal labeled icon button",
+              attrs: { type: "submit" }
+            },
+            [
+              _vm._v("\n            Simpan Server\n            "),
+              _c("i", { staticClass: "save icon" })
+            ]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7459d77d", module.exports)
   }
 }
 

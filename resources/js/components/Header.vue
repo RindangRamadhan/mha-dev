@@ -48,6 +48,9 @@
           <router-link :to="{name: 'iklan'}" class="item" v-if="this.$store.state.user.loggedIn">
               Iklan
           </router-link>
+          <router-link :to="{name: 'server'}" class="item" v-if="this.$store.state.user.loggedIn">
+              Server
+          </router-link>
           <router-link :to="{name: 'user'}" class="item" v-if="this.$store.state.user.loggedIn">
               User
           </router-link>

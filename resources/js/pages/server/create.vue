@@ -1,17 +1,17 @@
 <template lang="html">
     <layout>
-        <Breadcrumb active="iklan_create" :breadcrumb="breadcrumb" />
+        <Breadcrumb active="server_create" :breadcrumb="breadcrumb" />
         <form v-on:submit.prevent="saveForm()" v-bind:class="[loading ? 'ui loading form' : 'ui form']">
             <TextInput 
-              label="Nama Iklan"
+              label="Nama Server"
               type="text"
               id="name"
-              placeholder="Nama Iklan"
-              v-model="iklans.name"
+              placeholder="Nama Server"
+              v-model="servers.name"
               :errors="errors.name"
             />
             <button class="ui teal labeled icon button" type="submit">
-                Submit Iklan
+                Submit Server
                 <i class="send icon"></i>
             </button>
           </form>
@@ -26,11 +26,11 @@
 
     export default {
         data: () => ({
-            breadcrumb: [{value: 'home',label:'Dashboard'}, {value: 'iklan',label:'Iklan'}, {value: 'iklan_create',label:'Tambah Iklan'}],
+            breadcrumb: [{value: 'home',label:'Dashboard'}, {value: 'server',label:'Server'}, {value: 'server_create',label:'Tambah Server'}],
             loading: false,
             errors: [],
             message: '',
-            iklans: {
+            servers: {
                 name: '',
             }
         }),
@@ -44,10 +44,10 @@
           saveForm(){
             const app = this
             app.loading = true
-            axios.post('api/iklan',app.iklans).then((resp) => {
+            axios.post('api/server',app.servers).then((resp) => {
               app.loading = false
-              app.alert("Berhasil Menambahkan Iklan baru")
-              app.$router.push('/iklan')
+              app.alert("Berhasil Menambahkan Server baru")
+              app.$router.push('/server')
             })
             .catch((err) => {
               console.log(err)

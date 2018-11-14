@@ -7,6 +7,9 @@ import UserEdit from '../pages/user/edit'
 import Iklan from '../pages/iklan'
 import IklanCreate from '../pages/iklan/create'
 import IklanEdit from '../pages/iklan/edit'
+import Servers from '../pages/server'
+import ServerCreate from '../pages/server/create'
+import ServerEdit from '../pages/server/edit'
 
 const routes = [
       {
@@ -71,6 +74,33 @@ const routes = [
         path: '/iklan/edit/:id',
         name: 'iklan_edit',
         component: IklanEdit,
+        meta: {
+            requiresAuth: true,
+            is_admin: true
+        }
+      },
+      {
+        path: '/server',
+        name: 'server',
+        component: Servers,
+        meta: {
+            requiresAuth: true,
+            is_admin: true
+        }
+      },
+      {
+        path: '/server/create',
+        name: 'server_create',
+        component: ServerCreate,
+        meta: {
+            requiresAuth: true,
+            is_admin: true
+        }
+      },
+      {
+        path: '/server/edit/:id',
+        name: 'server_edit',
+        component: ServerEdit,
         meta: {
             requiresAuth: true,
             is_admin: true
