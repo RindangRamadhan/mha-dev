@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api','throttle:200,5')->group(function(){
+
+    Route::resource('users','API\UsersController');
+    Route::resource('otoritas','API\OtoritasController');
+
 });

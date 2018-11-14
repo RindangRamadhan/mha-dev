@@ -3,8 +3,8 @@
     <sui-grid centered vertical-align="middle">
       <sui-grid-column>
 
-        <h2 is="sui-header" color="teal" image>
-          <sui-header-content>Log-in to your account</sui-header-content>
+        <h2 is="sui-header" image>
+          <sui-header-content style="color: white">Log-in to your Account</sui-header-content>
         </h2>
 
         <sui-form v-on:submit.prevent="saveForm()">
@@ -37,6 +37,7 @@
   </div>
 </template>
 
+
 <script>
 
 import Message from '../components/Message'
@@ -53,16 +54,18 @@ export default {
   components:{
     Message, Loading
   },
+  mounted() {
+      console.log('Component mounted.')
+  },
   methods:{
     saveForm(e){
       const app = this
       app.loading = true
       axios.post('login',{email:app.email,password:app.password})
       .then((resp) => {
-        localStorage.setItem('api_token',resp.data.api_token)
-        app.$store.commit('user/LOGIN',resp.data)
+        console.log(app.$store)
         app.loading = false
-        app.$router.replace('/')
+        app.$router.push('/home')
       })
       .catch((err) => {
         console.log(err)
@@ -87,11 +90,12 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css" scoped>  
   .background {
-    background-color: #DADADA !important;
-    height: 100vh;
-    margin: 1em 0;
+    background-image: url('/images/login-background.jpg') !important;
+    background-size: cover !important;
+    height: 105vh; 
+    padding: 10px;
   }
   .grid {
     height: 100%;
