@@ -1,35 +1,16 @@
 <template lang="html">
     <layout>
-        <Breadcrumb active="user_edit" :breadcrumb="breadcrumb" />
+        <Breadcrumb active="iklan_edit" :breadcrumb="breadcrumb" />
         <form v-on:submit.prevent="saveForm()" v-bind:class="[loading ? 'ui loading form' : 'ui form']">
             <TextInput 
                 label="Name"
                 type="text"
                 placeholder="Name"
-                v-model="users.name"
+                v-model="iklans.name"
                 :errors="errors.name"
             />
-            <TextInput 
-                label="E-mail"
-                type="email"
-                placeholder="E-mail"
-                v-model="users.email"
-                :errors="errors.email"
-            />
-            <sui-form-field>
-                <label>Otoritas</label>
-                <select class="ui fluid search dropdown" name="card[expire-month]" v-model="users.otoritas" ref="otoritas">
-                    <option value="">--PILIH OTORITAS--</option>
-                    <option v-for="otoritas, index in this.$store.state.otoritas.otoritas" v-bind:value="otoritas.id">
-                                {{ otoritas.display_name }}
-                    </option>
-                </select>
-                <sui-label basic color="red" pointing v-if="errors.otoritas">
-                    {{errors.otoritas[0]}}
-                </sui-label>
-            </sui-form-field>
             <button class="ui teal labeled icon button" type="submit">
-                Simpan User
+                Simpan Iklan
                 <i class="save icon"></i>
             </button>
         </form>
@@ -44,32 +25,27 @@
 
     export default {
         data: () => ({
-            breadcrumb: [{value: 'home',label:'Dashboard'}, {value: 'user',label:'Users'}, {value: 'user_edit',label:'Edit User'}],
+            breadcrumb: [{value: 'home',label:'Dashboard'}, {value: 'iklan',label:'Iklans'}, {value: 'iklan_edit',label:'Edit Iklan'}],
             loading: false,
             errors: [],
             message: '',
-            users: {
+            iklans: {
                 name: '',
-                email: '',
-                otoritas: ''
             }
         }),
         mounted(){
             const app = this
-            app.$store.dispatch('otoritas/LOAD_OTORITAS')
-            app.findUser(app.$route.params.id)
+            app.findIklan(app.$route.params.id)
         },
         components:{
             Header, Breadcrumb, TextInput
         },
         methods: {
-          findUser(id){
+          findIklan(id){
             const app = this
-            axios.get(`api/users/${id}`).then((resp) => {
+            axios.get(`api/iklan/${id}`).then((resp) => {
                 const { data } = resp
-                app.users.name = data.name
-                app.users.email = data.email
-                app.users.otoritas = data.role.role_id
+                app.iklans.name = data.name
             })
             .catch((err) => {
                 console.log(err)
@@ -80,10 +56,10 @@
             const app = this
             const id = app.$route.params.id
             app.loading = true
-            axios.put(`api/users/${id}`,app.users).then((resp) => {
+            axios.put(`api/iklan/${id}`,app.iklans).then((resp) => {
                 app.loading = false
-                app.alert("Berhasil Mengubah User")
-                app.$router.push('/user')
+                app.alert("Berhasil Mengubah Iklan")
+                app.$router.push('/iklan')
             })
             .catch((err) => {
                 console.log(err)

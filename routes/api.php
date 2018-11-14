@@ -17,5 +17,6 @@ Route::middleware('auth:api','throttle:200,5')->group(function(){
 
     Route::resource('users','API\UsersController');
     Route::resource('otoritas','API\OtoritasController');
+    Route::resource('iklan','API\IklanController');
 
 });

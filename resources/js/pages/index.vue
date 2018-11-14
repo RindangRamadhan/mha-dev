@@ -63,8 +63,8 @@ export default {
       app.loading = true
       axios.post('login',{email:app.email,password:app.password})
       .then((resp) => {
-        console.log(app.$store)
         app.loading = false
+        localStorage.setItem('api_token',resp.data.api_token)
         app.$router.push('/home')
       })
       .catch((err) => {

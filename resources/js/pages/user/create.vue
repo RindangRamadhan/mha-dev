@@ -6,7 +6,7 @@
               label="Nama User"
               type="text"
               id="name"
-              placeholder="Name User"
+              placeholder="Nama User"
               v-model="users.name"
               :errors="errors.name"
             />
@@ -55,7 +55,7 @@
 
     export default {
         data: () => ({
-            breadcrumb: [{value: 'index',label:'Home'}, {value: 'user',label:'Users'}, {value: 'user_create',label:'Tambah User'}],
+            breadcrumb: [{value: 'home',label:'Dashboard'}, {value: 'user',label:'Users'}, {value: 'user_create',label:'Tambah User'}],
             loading: false,
             errors: [],
             message: '',

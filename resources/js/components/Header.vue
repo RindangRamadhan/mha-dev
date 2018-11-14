@@ -45,6 +45,9 @@
         <div class="menu" style="padding-left: 15px">
           <a class="item">Daftar Akun</a>
           <a class="item">Investor</a>
+          <router-link :to="{name: 'iklan'}" class="item" v-if="this.$store.state.user.loggedIn">
+              Iklan
+          </router-link>
           <router-link :to="{name: 'user'}" class="item" v-if="this.$store.state.user.loggedIn">
               User
           </router-link>
