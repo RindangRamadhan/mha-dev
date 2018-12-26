@@ -6,7 +6,7 @@
         <div class="ui stackable grid">
             <div class="nine wide column">
                 <div id="regInnkommende" class="ui stacked segment">
-                    <a class="ui olive ribbon label">Registrer innkommende</a>
+                    <a class="ui olive ribbon label">Dashboard 1</a>
 
                     <div class="ui form">
 
@@ -141,7 +141,7 @@
                 </div>
                 <div class="ui hidden divider"></div>
                 <div id="regUtgaende" class="ui stacked segment">
-                    <a class="ui ribbon orange label">Registrer utgående</a>
+                    <a class="ui ribbon orange label">Dashboard 2</a>
                     <div class="ui form">
 
                     <div class="two fields">
